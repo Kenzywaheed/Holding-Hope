@@ -1,0 +1,388 @@
+/* ==========================================================================
+   Holding Hope: Peaceful Design System & CSS Variables
+   Focused on empathy, tranquility, warmth, and accessibility
+   ========================================================================== */
+
+:root {
+  /* Peaceful Color Palette */
+  --color-canvas: #fbfbf9;
+  --color-canvas-subtle: #f4f3ee;
+  --color-card: #ffffff;
+  --color-card-frosted: rgba(255, 255, 255, 0.82);
+
+  /* Sage Green (Growth, Healing, Calm) */
+  --sage-50: #f2f7f4;
+  --sage-100: #e5efe9;
+  --sage-200: #cbe0d4;
+  --sage-300: #a3c7b2;
+  --sage-500: #52796f;
+  --sage-600: #416159;
+  --sage-700: #2f4842;
+
+  /* Sky Periwinkle (Peace, Clarity, Breath) */
+  --sky-50: #f1f6fc;
+  --sky-100: #e3eff9;
+  --sky-200: #c5dff4;
+  --sky-300: #99c6ed;
+  --sky-500: #5b92c4;
+  --sky-600: #4274a2;
+
+  /* Warm Honey Sun (Joy, Affection, Maternal warmth) */
+  --honey-50: #fffcf2;
+  --honey-100: #fef7dc;
+  --honey-200: #feebb6;
+  --honey-500: #f4a261;
+  --honey-600: #e76f51;
+
+  /* Lavender / Periwinkle (Inspiration, Neurodiversity pride) */
+  --lavender-50: #f7f5fa;
+  --lavender-100: #ede8f5;
+  --lavender-200: #d9d0e8;
+  --lavender-500: #8c7aa8;
+
+  /* Soft Earth Neutral Text */
+  --text-primary: #293241;
+  --text-secondary: #536479;
+  --text-muted: #8091a5;
+  --text-light: #ffffff;
+
+  /* Borders & Shadows */
+  --border-soft: rgba(82, 121, 111, 0.12);
+  --border-focus: rgba(82, 121, 111, 0.35);
+  --shadow-soft: 0 4px 20px -2px rgba(41, 50, 65, 0.05);
+  --shadow-medium: 0 10px 30px -4px rgba(41, 50, 65, 0.08);
+  --shadow-glow: 0 0 25px rgba(82, 121, 111, 0.15);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--text-primary);
+  line-height: 1.68;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Quicksand', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--color-card-frosted);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-panel:hover {
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(82, 121, 111, 0.22);
+}
+
+/* Peaceful Ambient Background Aura */
+.bg-ambient-orb-1 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 240, 236, 0.8) 0%, rgba(244, 247, 245, 0) 70%);
+  top: -150px;
+  right: -100px;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-ambient-orb-2 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 245, 220, 0.7) 0%, rgba(255, 251, 240, 0) 70%);
+  top: 400px;
+  left: -150px;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Peaceful Buttons */
+.btn-peaceful {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-peaceful-primary {
+  background: linear-gradient(135deg, var(--sage-500) 0%, var(--sage-600) 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(82, 121, 111, 0.28);
+}
+
+.btn-peaceful-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(82, 121, 111, 0.38);
+}
+
+.btn-peaceful-primary:active {
+  transform: translateY(0);
+}
+
+.btn-peaceful-secondary {
+  background: white;
+  color: var(--sage-700);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-peaceful-secondary:hover {
+  background: var(--sage-50);
+  border-color: var(--sage-300);
+  transform: translateY(-2px);
+}
+
+.btn-peaceful-pill {
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  border-radius: var(--radius-full);
+}
+
+/* Animations */
+@keyframes gentleBreath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.025);
+    opacity: 1;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes softShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.animate-breath {
+  animation: gentleBreath 4s ease-in-out infinite;
+}
+
+/* Badge & Tag Elements */
+.peace-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.peace-badge-sage {
+  background-color: var(--sage-100);
+  color: var(--sage-700);
+}
+
+.peace-badge-honey {
+  background-color: var(--honey-100);
+  color: var(--honey-600);
+}
+
+.peace-badge-sky {
+  background-color: var(--sky-100);
+  color: var(--sky-600);
+}
+
+.peace-badge-lavender {
+  background-color: var(--lavender-100);
+  color: var(--lavender-500);
+}
+
+/* Layout Utilities */
+.container-peace {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.section-peace {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* Card Styling */
+.peace-card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-smooth);
+}
+
+.peace-card:hover {
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(82, 121, 111, 0.2);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage-200);
+  border-radius: 9999px;
+  border: 2px solid var(--color-canvas);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sage-300);
+}
+
+/* Interactive Tabs */
+.peace-tab {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 1px solid rgba(82, 121, 111, 0.22);
+  background: #ffffff;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.peace-tab:hover {
+  color: var(--sage-700);
+  background: var(--sage-50);
+  border-color: var(--sage-400);
+}
+
+.peace-tab:focus-visible {
+  outline: 2px solid var(--sage-500);
+  outline-offset: 2px;
+}
+
+.peace-tab.active {
+  background: var(--sage-600);
+  border-color: var(--sage-600);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(65, 97, 89, 0.22);
+}
+
+/* Comprehensive Symmetrical Responsive Breakpoints (Laptop, Tablet, Mobile) */
+@media (max-width: 1024px) {
+  .section-peace {
+    padding: 68px 0;
+  }
+  .container-peace {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-peace {
+    padding: 52px 0;
+  }
+  .container-peace {
+    padding: 0 18px;
+  }
+  .peace-tab {
+    padding: 8px 16px;
+    font-size: 0.86rem;
+  }
+  .btn-peaceful {
+    padding: 10px 20px;
+    font-size: 0.92rem;
+  }
+  .peace-card {
+    border-radius: var(--radius-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-peace {
+    padding: 44px 0;
+  }
+  .container-peace {
+    padding: 0 14px;
+  }
+  .peace-tab {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+  .peace-badge {
+    padding: 4px 10px;
+    font-size: 0.76rem;
+  }
+}

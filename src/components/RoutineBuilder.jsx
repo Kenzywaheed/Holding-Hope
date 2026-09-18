@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Calendar, Check, Plus, Trash2, Printer, Sparkles, Sun, Moon, Utensils, BookOpen, Music, Heart } from 'lucide-react';
+import { Calendar, Check, Plus, Trash2, Printer, Sparkles, Sun, Moon, Utensils, BookOpen, Music, Heart, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const defaultRoutineItems = [
-  { id: 1, title: 'Gentle Wake-Up & Morning Hugs', time: '07:30 AM', icon: 'Sun', color: 'honey', completed: true },
-  { id: 2, title: 'Toothbrushing Song & Face Wash', time: '08:00 AM', icon: 'Sparkles', color: 'sky', completed: true },
+  { id: 1, title: 'Gentle Wake-Up & Morning Hugs', time: '07:30 AM', icon: 'Sun', color: 'honey', completed: false },
+  { id: 2, title: 'Toothbrushing Song & Face Wash', time: '08:00 AM', icon: 'Sparkles', color: 'sky', completed: false },
   { id: 3, title: 'Nutritious Breakfast & Fruit Slices', time: '08:30 AM', icon: 'Utensils', color: 'sage', completed: false },
   { id: 4, title: 'Speech & Makaton Sign Play (Mirror)', time: '09:30 AM', icon: 'BookOpen', color: 'lavender', completed: false },
   { id: 5, title: 'Outdoor Garden & Barefoot Walk', time: '10:30 AM', icon: 'Sun', color: 'sage', completed: false },
@@ -103,14 +103,28 @@ export default function RoutineBuilder() {
             </div>
           </div>
 
-          <button
-            onClick={handlePrint}
-            className="btn-peaceful btn-peaceful-secondary btn-peaceful-pill"
-            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
-          >
-            <Printer size={16} />
-            <span>Print Visual Schedule</span>
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            {completedCount > 0 && (
+              <button
+                onClick={() => setItems(items.map(item => ({ ...item, completed: false })))}
+                className="btn-peaceful btn-peaceful-secondary btn-peaceful-pill"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem' }}
+                title="Uncheck all completed tasks for a fresh start"
+              >
+                <RotateCcw size={14} />
+                <span>Reset for New Day</span>
+              </button>
+            )}
+
+            <button
+              onClick={handlePrint}
+              className="btn-peaceful btn-peaceful-secondary btn-peaceful-pill"
+              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+            >
+              <Printer size={16} />
+              <span>Print Visual Schedule</span>
+            </button>
+          </div>
         </div>
 
         {/* Schedule List */}

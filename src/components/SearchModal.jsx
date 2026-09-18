@@ -7,7 +7,7 @@ import { differencesData } from '../data/differencesData';
 import { mythsData } from '../data/mythsData';
 import { mothersToolkitData } from '../data/mothersToolkitData';
 
-export default function SearchModal({ isOpen, onClose }) {
+export default function SearchModal({ isOpen, onClose, onNavigatePage }) {
   const [query, setQuery] = useState('');
 
   if (!isOpen) return null;
@@ -152,7 +152,23 @@ export default function SearchModal({ isOpen, onClose }) {
 
   const handleSelect = (link) => {
     onClose();
-    window.location.hash = link;
+    const sectionId = link.replace('#', '');
+    let pageId = 1;
+    if (['mothers-guide', 'activity-planner', 'routine-builder'].includes(sectionId)) {
+      pageId = 2;
+    } else if (['mothers-toolkit', 'milestones'].includes(sectionId)) {
+      pageId = 3;
+    } else if (['knowledge-base', 'differences', 'myths'].includes(sectionId)) {
+      pageId = 4;
+    } else if (['resources'].includes(sectionId)) {
+      pageId = 5;
+    }
+
+    if (onNavigatePage) {
+      onNavigatePage(pageId, sectionId);
+    } else {
+      window.location.hash = link;
+    }
   };
 
   return (

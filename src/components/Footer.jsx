@@ -1,9 +1,17 @@
 import React from 'react';
-import { Heart, Sun, ArrowUp } from 'lucide-react';
+import { Heart, ArrowUp } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onNavigatePage }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNav = (pageId, sectionId) => {
+    if (onNavigatePage) {
+      onNavigatePage(pageId, sectionId);
+    } else {
+      window.location.hash = sectionId;
+    }
   };
 
   return (
@@ -11,7 +19,7 @@ export default function Footer() {
       style={{
         backgroundColor: '#25332f',
         color: '#e5efe9',
-        padding: '70px 0 35px',
+        padding: '60px 0 35px',
         position: 'relative'
       }}
     >
@@ -21,7 +29,7 @@ export default function Footer() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
             gap: '40px',
-            marginBottom: '50px'
+            marginBottom: '44px'
           }}
         >
           {/* Brand Column */}
@@ -49,24 +57,58 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Jump Links */}
+          {/* Quick Jump Links by Page */}
           <div>
-            <h4 style={{ color: '#ffffff', fontSize: '1.1rem', marginBottom: '18px' }}>
-              Quick Navigation
+            <h4 style={{ color: '#ffffff', fontSize: '1.1rem', marginBottom: '16px' }}>
+              5-Step Learning Journey
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.9rem' }}>
-              <li><a href="#hero" style={{ color: '#cbe0d4', textDecoration: 'none' }}>Mother & Child Sanctuary</a></li>
-              <li><a href="#mothers-guide" style={{ color: '#cbe0d4', textDecoration: 'none' }}>Mother's Teaching Journey</a></li>
-              <li><a href="#activity-planner" style={{ color: '#cbe0d4', textDecoration: 'none' }}>Home Activity Planner</a></li>
-              <li><a href="#knowledge-base" style={{ color: '#cbe0d4', textDecoration: 'none' }}>Medical & Genetics Guide</a></li>
-              <li><a href="#differences" style={{ color: '#cbe0d4', textDecoration: 'none' }}>Individual Differences</a></li>
-              <li><a href="#routine-builder" style={{ color: '#cbe0d4', textDecoration: 'none' }}>Visual Daily Schedule</a></li>
+              <li>
+                <button
+                  onClick={() => handleNav(1, 'hero')}
+                  style={{ background: 'none', border: 'none', color: '#cbe0d4', cursor: 'pointer', padding: 0, textAlign: 'left', font: 'inherit' }}
+                >
+                  Step 1: Sanctuary Welcome & Roadmap
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav(2, 'mothers-guide')}
+                  style={{ background: 'none', border: 'none', color: '#cbe0d4', cursor: 'pointer', padding: 0, textAlign: 'left', font: 'inherit' }}
+                >
+                  Step 2: Mother's Teaching Journey & Activities
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav(3, 'mothers-toolkit')}
+                  style={{ background: 'none', border: 'none', color: '#cbe0d4', cursor: 'pointer', padding: 0, textAlign: 'left', font: 'inherit' }}
+                >
+                  Step 3: Mama's Haven, Signs & Daily Care
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav(4, 'knowledge-base')}
+                  style={{ background: 'none', border: 'none', color: '#cbe0d4', cursor: 'pointer', padding: 0, textAlign: 'left', font: 'inherit' }}
+                >
+                  Step 4: Medical Knowledge & Myths vs Facts
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav(5, 'resources')}
+                  style={{ background: 'none', border: 'none', color: '#cbe0d4', cursor: 'pointer', padding: 0, textAlign: 'left', font: 'inherit' }}
+                >
+                  Step 5: Support Networks & Circles
+                </button>
+              </li>
             </ul>
           </div>
 
           {/* Medical Disclaimer & Compassionate Note */}
           <div>
-            <h4 style={{ color: '#ffffff', fontSize: '1.1rem', marginBottom: '18px' }}>
+            <h4 style={{ color: '#ffffff', fontSize: '1.1rem', marginBottom: '16px' }}>
               Compassionate Note & Disclaimer
             </h4>
             <p style={{ fontSize: '0.84rem', color: '#a3c7b2', lineHeight: 1.6, marginBottom: '14px' }}>
@@ -94,7 +136,6 @@ export default function Footer() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span>Crafted with peaceful intention, empathy & love</span>
-
           </div>
 
           <button
